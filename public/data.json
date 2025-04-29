@@ -1,0 +1,314 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "question": "What is the output of: console.log(Math.min() < Math.max());",
+      "options": [
+        {
+          "id": 0,
+          "text": "false",
+          "correct": true,
+          "explanation": "Math.min() without arguments returns Infinity, while Math.max() returns -Infinity. Since Infinity is not less than -Infinity, the result is false."
+        },
+        {
+          "id": 1,
+          "text": "true",
+          "correct": false,
+          "explanation": "This would be true if Math.min() returned a smaller value than Math.max(), but without arguments, they return Infinity and -Infinity respectively."
+        },
+        {
+          "id": 2,
+          "text": "NaN",
+          "correct": false,
+          "explanation": "Comparisons with NaN would return false, not NaN, but Math.min() and Math.max() without arguments don't return NaN."
+        },
+        {
+          "id": 3,
+          "text": "undefined",
+          "correct": false,
+          "explanation": "Comparisons always return a boolean value, not undefined."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 1,
+      "question": "What does this code output? console.log(('b' + 'a' + + 'c' + 'a').toLowerCase().split('').sort().join(''));",
+      "options": [
+        {
+          "id": 0,
+          "text": "aaabcn",
+          "correct": true,
+          "explanation": "'b'+'a'+ +'c'+'a' evaluates to 'baNaNa' because +'c' is NaN. After toLowerCase(), splitting into an array, sorting alphabetically, and joining, we get 'aaabcn' where 'c' and 'n' come from 'NaN'."
+        },
+        {
+          "id": 1,
+          "text": "aaabc",
+          "correct": false,
+          "explanation": "This misses the 'n' from NaN in the final sorted string."
+        },
+        {
+          "id": 2,
+          "text": "banana",
+          "correct": false,
+          "explanation": "This would be the result without the sort() method, and it doesn't account for the correct ordering of characters."
+        },
+        {
+          "id": 3,
+          "text": "aabacn",
+          "correct": false,
+          "explanation": "The sorting would place all 'a's together at the beginning."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 2,
+      "question": "What's the result? console.log(([]+{})[+!![]][+!![]+!![]+!![]+!![]+!![]]+({}+[])[+!![]]);",
+      "options": [
+        {
+          "id": 0,
+          "text": "to",
+          "correct": true,
+          "explanation": "This obfuscated code converts to ''+{}[1][5]+({}''+[])[1]. []+{} is '[object Object]' and [1] accesses 'b'. Then [5] on 'b' gives undefined. {}+[] is '[object Object]' and [1] accesses 'o'. The result is 'to'."
+        },
+        {
+          "id": 1,
+          "text": "undefined",
+          "correct": false,
+          "explanation": "The expression evaluates to a specific string, not undefined."
+        },
+        {
+          "id": 2,
+          "text": "NaN",
+          "correct": false,
+          "explanation": "The expression evaluates to a string, not NaN."
+        },
+        {
+          "id": 3,
+          "text": "bo",
+          "correct": false,
+          "explanation": "This is incorrectly assuming a different character access than what actually happens in the expression."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 3,
+      "question": "What's the output? const a=0.1, b=0.2, c=0.3; console.log(a+b===c, a+b);",
+      "options": [
+        {
+          "id": 0,
+          "text": "false 0.30000000000000004",
+          "correct": true,
+          "explanation": "Due to IEEE-754 floating point precision issues, 0.1 + 0.2 actually equals 0.30000000000000004, not exactly 0.3, causing the equality check to be false."
+        },
+        {
+          "id": 1,
+          "text": "true 0.3",
+          "correct": false,
+          "explanation": "This would be correct if floating point math was perfectly precise, but it's not in JavaScript."
+        },
+        {
+          "id": 2,
+          "text": "false 0.3",
+          "correct": false,
+          "explanation": "The equality is indeed false, but the actual value of a+b isn't exactly 0.3."
+        },
+        {
+          "id": 3,
+          "text": "true 0.30000000000000004",
+          "correct": false,
+          "explanation": "If a+b is 0.30000000000000004, it can't equal c which is 0.3."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 4,
+      "question": "What does this return? function f() { return f; } console.log(new f() instanceof f);",
+      "options": [
+        {
+          "id": 0,
+          "text": "false",
+          "correct": true,
+          "explanation": "When using 'new f()', the constructor should return an object that's an instance of f. But here f returns itself (the function), not a new instance, so the instanceof check returns false."
+        },
+        {
+          "id": 1,
+          "text": "true",
+          "correct": false,
+          "explanation": "This would be true if f returned a new object, but it returns the function itself."
+        },
+        {
+          "id": 2,
+          "text": "TypeError",
+          "correct": false,
+          "explanation": "This code doesn't throw a TypeError; it executes and returns a boolean value."
+        },
+        {
+          "id": 3,
+          "text": "undefined",
+          "correct": false,
+          "explanation": "The expression evaluates to a boolean, not undefined."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 5,
+      "question": "What's the output? console.log(typeof document.all);",
+      "options": [
+        {
+          "id": 0,
+          "text": "undefined",
+          "correct": true,
+          "explanation": "document.all is a historical browser feature that's now deprecated. It's the only object in JavaScript that has typeof return 'undefined' despite not being undefined - a special case in the language specification."
+        },
+        {
+          "id": 1,
+          "text": "object",
+          "correct": false,
+          "explanation": "Although document.all is an object-like collection, typeof document.all uniquely returns 'undefined'."
+        },
+        {
+          "id": 2,
+          "text": "function",
+          "correct": false,
+          "explanation": "document.all is not a function, and typeof doesn't return 'function' for it."
+        },
+        {
+          "id": 3,
+          "text": "ReferenceError",
+          "correct": false,
+          "explanation": "This code doesn't throw a ReferenceError in browsers; it returns a string."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 6,
+      "question": "What will this output? console.log((function(){var a=b=3;})(), typeof a, typeof b);",
+      "options": [
+        {
+          "id": 0,
+          "text": "undefined undefined number",
+          "correct": true,
+          "explanation": "The IIFE assigns 3 to variable b without declaration (making it global) and to local variable a. After execution, a is not accessible (undefined), but b exists as a global with value 3."
+        },
+        {
+          "id": 1,
+          "text": "3 undefined undefined",
+          "correct": false,
+          "explanation": "The IIFE returns undefined, not 3, and 'a' is not accessible outside the function."
+        },
+        {
+          "id": 2,
+          "text": "undefined number number",
+          "correct": false,
+          "explanation": "Variable 'a' is locally scoped and not accessible outside the function."
+        },
+        {
+          "id": 3,
+          "text": "undefined undefined undefined",
+          "correct": false,
+          "explanation": "While 'a' is undefined outside the function, b is created as a global variable and has type 'number'."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 7,
+      "question": "What's the value? const a = [1,2,3]; const b = [1,2,3]; console.log([...new Set([...a,...b,...a])].length);",
+      "options": [
+        {
+          "id": 0,
+          "text": "3",
+          "correct": true,
+          "explanation": "[...a,...b,...a] creates [1,2,3,1,2,3,1,2,3]. Passing this to a Set removes duplicates, giving a Set with three elements: 1, 2, and 3. [...new Set(...)] converts it back to an array of length 3."
+        },
+        {
+          "id": 1,
+          "text": "6",
+          "correct": false,
+          "explanation": "This would be correct if the Set didn't remove duplicates, but removing duplicates is exactly what a Set does."
+        },
+        {
+          "id": 2,
+          "text": "9",
+          "correct": false,
+          "explanation": "This would be the length without using a Set to remove duplicates."
+        },
+        {
+          "id": 3,
+          "text": "0",
+          "correct": false,
+          "explanation": "The Set will not be empty as it contains the unique values from the arrays."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 8,
+      "question": "What does this output? console.log(Array(3).map(x => 1));",
+      "options": [
+        {
+          "id": 0,
+          "text": "[empty × 3]",
+          "correct": true,
+          "explanation": "Array(3) creates an array with 3 empty slots (not undefined values). map() skips empty slots and doesn't transform them, so the result is still an array with 3 empty slots."
+        },
+        {
+          "id": 1,
+          "text": "[1, 1, 1]",
+          "correct": false,
+          "explanation": "This would be correct if Array(3) initialized the array with undefined values that map could transform, but it creates empty slots instead."
+        },
+        {
+          "id": 2,
+          "text": "[undefined, undefined, undefined]",
+          "correct": false,
+          "explanation": "Array(3) creates empty slots, not slots with undefined values."
+        },
+        {
+          "id": 3,
+          "text": "[]",
+          "correct": false,
+          "explanation": "The result is an array with 3 empty slots, not an empty array."
+        }
+      ],
+      "shuffle": true
+    },
+    {
+      "id": 9,
+      "question": "What is the output? console.log(0.1 + 0.2 - 0.3 === 0 ? true : Math.abs(0.1 + 0.2 - 0.3) < Number.EPSILON);",
+      "options": [
+        {
+          "id": 0,
+          "text": "true",
+          "correct": true,
+          "explanation": "Due to floating point precision, 0.1 + 0.2 - 0.3 is approximately 5.551115123125783e-17, not exactly 0. The direct equality check fails, but the difference is smaller than Number.EPSILON (which is specifically designed for these comparisons), so the expression evaluates to true."
+        },
+        {
+          "id": 1,
+          "text": "false",
+          "correct": false,
+          "explanation": "The difference between 0.1 + 0.2 - 0.3 and 0 is smaller than Number.EPSILON."
+        },
+        {
+          "id": 2,
+          "text": "0",
+          "correct": false,
+          "explanation": "The expression evaluates to a boolean, not a number."
+        },
+        {
+          "id": 3,
+          "text": "5.551115123125783e-17",
+          "correct": false,
+          "explanation": "This is the approximate value of 0.1 + 0.2 - 0.3, but the expression evaluates to a boolean, not this number."
+        }
+      ],
+      "shuffle": true
+    }
+  ]
+}
